@@ -3,19 +3,16 @@ set -eu
 
 defaultDebianSuite='stretch'
 declare -A debianSuite=(
-	[5.6]='jessie'
 	[7.0]='jessie'
 	[7.1]='jessie'
 )
 defaultAlpineVersion='3.6'
 declare -A alpineVersion=(
-	[5.6]='3.4'
 	[7.0]='3.4'
 	[7.1]='3.4'
 )
 
 declare -A aliases=(
-	[5.6]='5'
 	[7.2]='7 latest'
 	[7.3-rc]='rc'
 )
