@@ -13,6 +13,8 @@ env:
 
 install:
   - git clone https://github.com/docker-library/official-images.git ~/official-images
+  - grep -lr '/var/www/html' ~/official-images/test/tests/php-* | xargs sed -i -e 's!/var/www/html!/var/www/magento2!g'
+  - sed -i -e 's!pdo_mysql!exif!g' ~/official-images/test/tests/php-ext-install/container.sh
 
 before_script:
   - env | sort
