@@ -120,6 +120,10 @@ for version in "${versions[@]}"; do
 
 	for suite in stretch jessie alpine3.6 alpine3.4; do
 		[ -d "$version/$suite" ] || continue
+		if [ "${suite#alpine}" != "$suite" ]; then
+			echo "Skipping Alpine build"
+			continue
+		fi
 		alpineVer="${suite#alpine}"
 
 		baseDockerfile=Dockerfile-debian.template
@@ -191,6 +195,7 @@ for version in "${versions[@]}"; do
 		dir="${dir%/}"
 		variant="${dir#$version}"
 		variant="${variant#/}"
+		[ "${variant#alpine}" != "$variant" ] && continue
 		newTravisEnv+='\n  - VERSION='"$version VARIANT=$variant"
 	done
 	travisEnv="$newTravisEnv$travisEnv"
