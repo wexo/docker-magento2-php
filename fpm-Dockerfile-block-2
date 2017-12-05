@@ -1,2 +1,2 @@
 RUN rm -rf /var/www/html
-WORKDIR /var/www/magento
+WORKDIR /var/www/magento2
